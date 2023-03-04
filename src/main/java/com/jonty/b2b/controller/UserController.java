@@ -32,7 +32,7 @@ public class UserController {
     @PostMapping("/login")
     public Map<String, Object> UserLogin(@RequestBody LoginUserInfo loginUserInfo) {
         Map<String, Object> map = new HashMap<>();
-        map.put("token", userService.UserLogin(loginUserInfo));
+        map.put("token", userService.userLogin(loginUserInfo));
         map.put("userLogin", userMapper.selectUserByPhone(loginUserInfo.getPhone()));
         return map;
     }
@@ -40,6 +40,6 @@ public class UserController {
     @PostMapping("/register")
     public String UserRegister(@RequestBody User user) {
         System.out.println("user = " + user);
-        return userService.UserRegister(user);
+        return userService.userRegister(user);
     }
 }

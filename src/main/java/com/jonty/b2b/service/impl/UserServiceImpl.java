@@ -30,7 +30,7 @@ public class UserServiceImpl implements IUserService {
 
     // 用户登录
     @Override
-    public String UserLogin(LoginUserInfo loginUserInfo) {
+    public String userLogin(LoginUserInfo loginUserInfo) {
         User currentUser = userMapper.selectUserByPhone(loginUserInfo.getPhone());
         System.out.println("currentUser = " + currentUser);
         if(currentUser == null){
@@ -46,7 +46,7 @@ public class UserServiceImpl implements IUserService {
 
     // 用户注册
     @Override
-    public String UserRegister(User user) {
+    public String userRegister(User user) {
         // 加密
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         int add = userMapper.insertSelective(user);

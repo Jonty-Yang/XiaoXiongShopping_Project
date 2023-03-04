@@ -12,10 +12,9 @@ import com.jonty.b2b.vo.LoginUserInfo;
 public interface IUserService {
 
     // 登录
-    String UserLogin(LoginUserInfo loginUserInfo);
+    String userLogin(LoginUserInfo loginUserInfo);
 
     // 注册
-    String UserRegister(User user);
-
+    String userRegister(User user);
 
 }
