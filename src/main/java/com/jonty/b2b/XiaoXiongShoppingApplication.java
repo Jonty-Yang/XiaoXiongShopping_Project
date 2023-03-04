@@ -14,6 +14,7 @@ public class XiaoXiongShoppingApplication {
         SpringApplication.run(XiaoXiongShoppingApplication.class, args);
         log.info("项目启动成功！");
         log.info("项目启动成功 master");
+        log.info("项目启动成功 dev");
     }
 
 }
