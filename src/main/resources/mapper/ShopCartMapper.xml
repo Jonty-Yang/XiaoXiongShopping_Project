@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jonty.b2b.mapper.ShopCartMapper">
+    <resultMap id="BaseResultMap" type="com.jonty.b2b.entity.ShopCart">
+        <id column="scid" property="scid" />
+        <result column="gid" property="gid"/>
+        <result column="num" property="num"/>
+        <result column="uid" property="uid"/>
+        <result column="date" property="date"/>
+        <result column="status" property="status"/>
+        <result column="spare" property="spare"/>
+        <!--一对多-->
+        <collection property="goods" ofType="com.jonty.b2b.entity.Goods">
+            <id column="gid" property="gid"/>
+            <result column="sid" property="sid"/>
+            <result column="name" property="name"/>
+            <result column="tid" property="tid"/>
+            <result column="or_price" property="or_price"/>
+            <result column="dis_price" property="dis_price"/>
+            <result column="color" property="color"/>
+            <result column="remark" property="remark"/>
+            <result column="img" property="img"/>
+            <result column="stock" property="stock"/>
+            <result column="sales" property="sales"/>
+            <result column="praise" property="praise"/>
+            <result column="date" property="date"/>
+            <result column="status" property="status"/>
+            <result column="spare1" property="spare1"/>
+            <result column="spare2" property="spare2"/>
+        </collection>
+    </resultMap>
+
+
+    <!--根据用户id查询购物车信息-->
+    <select id="findCartByUid" resultMap="BaseResultMap">
+        select sc.*,g.* from shop_cart sc,goods g where sc.gid = g.gid and uid = #{uid}
+    </select>
+
+    <insert id="addCart" parameterType="com.jonty.b2b.entity.ShopCart">
+        insert into shop_cart(gid,uid,num,`date`) value (#{gid},#{uid},#{num},#{date})
+    </insert>
+
+    <update id="updateNumByCart" parameterType="com.jonty.b2b.entity.ShopCart">
+        update shop_cart set num = num + #{num} where uid = #{uid} and gid = #{gid};
+    </update>
+</mapper>

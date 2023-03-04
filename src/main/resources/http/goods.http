@@ -1,0 +1,6 @@
+GET http://localhost:9999/goods/findGoodsByName/
+Accept: application/json
+
+{
+name:'小米'
+}
