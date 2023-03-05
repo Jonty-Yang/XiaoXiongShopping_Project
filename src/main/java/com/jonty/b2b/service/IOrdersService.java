@@ -17,4 +17,7 @@ public interface IOrdersService {
 
     // 根据uid查询订单信息
     List<Orders> findAllByUid(Integer uid);
+
+    // 修改订单信息
+    String updateOrdersById(Orders orders);
 }

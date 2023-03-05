@@ -22,7 +22,6 @@ import java.util.List;
  */
 
 @Service
-@Transactional // 事物回滚注解
 @Slf4j
 public class OrdersServiceImpl implements IOrdersService {
 
@@ -35,6 +34,7 @@ public class OrdersServiceImpl implements IOrdersService {
     @Autowired
     private UserMapper userMapper;
 
+    @Transactional // 事物回滚注解
     @Override
     public int createOrder(Orders orders) {
         log.info("订单信息：[{}]",orders);
@@ -63,5 +63,11 @@ public class OrdersServiceImpl implements IOrdersService {
     @Override
     public List<Orders> findAllByUid(Integer uid) {
         return ordersMapper.findAllByUid(uid);
+    }
+
+    @Override
+    public String updateOrdersById(Orders orders) {
+        log.info("修改后的信息为:[{}]",orders);
+        return null;
     }
 }
