@@ -17,4 +17,7 @@ public interface IUserService {
     // 注册
     String userRegister(User user);
 
+    // 修改
+    boolean updateUserById(User user);
+
 }

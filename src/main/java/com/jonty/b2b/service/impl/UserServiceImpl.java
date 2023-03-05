@@ -55,4 +55,11 @@ public class UserServiceImpl implements IUserService {
         }
         return "注册失败！";
     }
+
+    @Override
+    public boolean updateUserById(User user) {
+        log.info("修改后的信息为:[{}]",user);
+        int update = userMapper.updateByPrimaryKeySelective(user);
+        return update >= 1;
+    }
 }
