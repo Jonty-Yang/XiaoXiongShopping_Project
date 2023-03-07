@@ -5,10 +5,14 @@ Accept: application/json
 ### 测试模拟登录接口
 POST http://localhost:9999/user/login
 Content-Type: application/json
-token: eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NzgxOTg5MTUsImlhdCI6MTY3ODE4MDkxNX0.5T1Z_qB4A5poGe4zord4YAk2r7erjttHbbiNer9Ip0ZAH_CB1QFdiGQ2bnTcA61NTaWtmIZR_HJNac3U1uQJHw
 
 {
-  "username":  "admin",
-  "password":  "123456"
+  "phone":  "18811360631",
+  "password":  "123"
 }
+
+### 根据uid查询对应的地址信息
+GET http://localhost:9999/address/addressByUserId/1
+Accept: application/json
+token: eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NzgyMTIzMjMsInN1YiI6IjE4ODExMzYwNjMxIiwiaWF0IjoxNjc4MTk0MzIzfQ.Rlm5Apfl_dRxOzUYjWyjCg2bqCZFXqd-cJGouZBFEh5gn7RhGHcs4HH4Qxq676xaO-3C9zAyOsHBp7rTt9GjGg
 
