@@ -62,4 +62,18 @@ public class UserServiceImpl implements IUserService {
         int update = userMapper.updateByPrimaryKeySelective(user);
         return update >= 1;
     }
+
+    /**
+     * 模拟登录 静态数据
+     * @param loginUserInfo 登录 vo 对象
+     * @return
+     */
+    @Override
+    public String userLoginByText(LoginUserInfo loginUserInfo){
+        if (!("admin".equalsIgnoreCase(loginUserInfo.getPhone()) ||
+                "123456".equalsIgnoreCase(loginUserInfo.getPassword()))) {
+            throw new RuntimeException("密码或用户名不正确，静态登录！");
+        }
+        return JwtUtils.generate(loginUserInfo.getPhone());
+    }
 }

@@ -1,6 +1,14 @@
-GET http://localhost:9999/goods/findGoodsByName/
+GET http://localhost:9999/goods/findGoodsByName/小米
 Accept: application/json
 
+
+### 测试模拟登录接口
+POST http://localhost:9999/user/login
+Content-Type: application/json
+token: eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2NzgxOTg5MTUsImlhdCI6MTY3ODE4MDkxNX0.5T1Z_qB4A5poGe4zord4YAk2r7erjttHbbiNer9Ip0ZAH_CB1QFdiGQ2bnTcA61NTaWtmIZR_HJNac3U1uQJHw
+
 {
-name:'小米'
+  "username":  "admin",
+  "password":  "123456"
 }
+

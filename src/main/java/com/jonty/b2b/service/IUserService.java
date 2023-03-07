@@ -20,4 +20,6 @@ public interface IUserService {
     // 修改
     boolean updateUserById(User user);
 
+    // 模拟登录
+    String userLoginByText(LoginUserInfo loginUserInfo);
 }

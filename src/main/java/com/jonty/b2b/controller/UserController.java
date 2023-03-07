@@ -29,7 +29,7 @@ public class UserController {
     @Resource
     private UserMapper userMapper;
 
-    @PostMapping("/login")
+    //@PostMapping("/login")
     public Map<String, Object> UserLogin(@RequestBody LoginUserInfo loginUserInfo) {
         Map<String, Object> map = new HashMap<>();
         map.put("token", userService.userLogin(loginUserInfo));
@@ -41,5 +41,11 @@ public class UserController {
     public String UserRegister(@RequestBody User user) {
         System.out.println("user = " + user);
         return userService.userRegister(user);
+    }
+
+    @PostMapping("/login")
+    public String userLogin2(@RequestBody LoginUserInfo loginUserInfo){
+        System.out.println("loginUserInfo = " + loginUserInfo);
+        return userService.userLoginByText(loginUserInfo);
     }
 }

@@ -11,17 +11,14 @@
     <groupId>com.jonty.b2b</groupId>
     <artifactId>xiao_xiong_shopping</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>xiao_xiong_shopping</name>
-    <description>Demo project for Spring Boot</description>
-    <properties>
-        <java.version>11</java.version>
-    </properties>
+    <packaging>jar</packaging>
+
     <dependencies>
         <!--jpa依赖 可以自动建表和免写sql-->
-        <!--<dependency>-->
-        <!--    <groupId>org.springframework.boot</groupId>-->
-        <!--    <artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -93,6 +90,31 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.8</version>
         </dependency>
+
+        <!-- 引入 redis 的依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.0.3.RELEASE</version>
+        </dependency>
+        <!--        apache 语法工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
+        <!--        apache 集合工具包-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+        <!-- 国产大工具集-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -107,6 +129,7 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                    <fork>true</fork>
                 </configuration>
             </plugin>
         </plugins>
