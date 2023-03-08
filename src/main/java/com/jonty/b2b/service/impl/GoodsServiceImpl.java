@@ -4,10 +4,10 @@ import com.jonty.b2b.entity.Goods;
 import com.jonty.b2b.mapper.GoodsMapper;
 import com.jonty.b2b.service.IGoodsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -23,7 +23,7 @@ import java.util.Set;
 @Transactional // 事务回滚注解
 public class GoodsServiceImpl implements IGoodsService {
 
-    @Resource
+    @Autowired
     private GoodsMapper goodsMapper;
 
     // 查询所有商品
