@@ -2,6 +2,7 @@ package com.jonty.b2b.service;
 
 import com.jonty.b2b.entity.Collection;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

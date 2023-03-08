@@ -21,5 +21,5 @@ public interface UserMapper {
     User selectUserByPhone(String phone);
 
     // 扣减余额
-    int deductBalance(@Param("uid") Integer uid,@Param("balance") Double balance);
+    int deductBalance(@Param("uid") Integer uid, @Param("balance") Double balance);
 }

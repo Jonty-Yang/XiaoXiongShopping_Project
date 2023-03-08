@@ -22,26 +22,27 @@ import java.util.Date;
 
 
 public class AuthFilter extends OncePerRequestFilter {
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         // 放行login和/user/register请求
-        if(request.getRequestURI().contains("login") || request.getRequestURI().contains("/user/register")){
-            filterChain.doFilter(request,response);
+        if (request.getRequestURI().contains("login") || request.getRequestURI().contains("/user/register")) {
+            filterChain.doFilter(request, response);
             return;
         }
         // 放行axios试探请求方法options
-        if(request.getMethod().equalsIgnoreCase("options")){
-            filterChain.doFilter(request,response);
+        if (request.getMethod().equalsIgnoreCase("options")) {
+            filterChain.doFilter(request, response);
             return;
         }
         // 获取请求头中的token
         String token = request.getHeader("token");
-        if(token == null){
+        if (token == null) {
             throw new RuntimeException("凭证不能为空");
         }
         // 解析凭证
         Claims claims = JwtUtils.parse(token);
-        if(claims.getExpiration().before(new Date())){
+        if (claims.getExpiration().before(new Date())) {
             throw new RuntimeException("凭证已过期！");
         }
         // 存到上下文
@@ -52,6 +53,6 @@ public class AuthFilter extends OncePerRequestFilter {
                         Collections.emptyList()
                 )
         );
-        filterChain.doFilter(request,response);
+        filterChain.doFilter(request, response);
     }
 }

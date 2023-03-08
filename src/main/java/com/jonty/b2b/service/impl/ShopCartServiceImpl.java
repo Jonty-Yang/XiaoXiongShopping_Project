@@ -3,6 +3,7 @@ package com.jonty.b2b.service.impl;
 import com.jonty.b2b.entity.ShopCart;
 import com.jonty.b2b.mapper.ShopCartMapper;
 import com.jonty.b2b.service.IShopCartService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,9 +17,9 @@ import java.util.List;
  */
 
 @Service
-public class ShopCartServiceImpl implements IShopCartService{
+public class ShopCartServiceImpl implements IShopCartService {
 
-    @Resource
+    @Autowired
     private ShopCartMapper shopCartMapper;
 
     // 根据uid查询购物车数据
@@ -34,10 +35,10 @@ public class ShopCartServiceImpl implements IShopCartService{
         // 先查询当前用户的购物车商品
         List<ShopCart> cartList = shopCartMapper.findCartByUid(cart.getUid());
         for (ShopCart c : cartList) {
-           if( c.getGid() == cart.getGid()){
-               // 如果该商品已在购物车，则只需要修改该商品的数量即可
-              return shopCartMapper.updateNumByCart(cart);
-           }
+            if (c.getGid() == cart.getGid()) {
+                // 如果该商品已在购物车，则只需要修改该商品的数量即可
+                return shopCartMapper.updateNumByCart(cart);
+            }
         }
         // 添加到购物车
         return shopCartMapper.addCart(cart);

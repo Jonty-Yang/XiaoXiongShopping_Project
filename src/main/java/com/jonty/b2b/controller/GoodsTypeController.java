@@ -22,7 +22,7 @@ public class GoodsTypeController {
     private IGoodsTypeService goodsTypeService;
 
     @GetMapping("/getAllGoodsType")
-    public List<GoodsType> findGoodsType(){
+    public List<GoodsType> findGoodsType() {
         return goodsTypeService.findGoodsType();
     }
 }

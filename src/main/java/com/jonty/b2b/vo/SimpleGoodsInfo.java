@@ -19,7 +19,11 @@ public class SimpleGoodsInfo {
     private String name;
     private Double price;
 
-    public Goods to(){
+    /**
+     * 简单商品转实体对象
+     * @return
+     */
+    public Goods toGoods() {
         Goods goods = new Goods();
         goods.setGid(id);
         goods.setName(name);

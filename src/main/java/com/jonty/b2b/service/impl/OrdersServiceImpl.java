@@ -37,7 +37,7 @@ public class OrdersServiceImpl implements IOrdersService {
     @Transactional // 事物回滚注解
     @Override
     public int createOrder(Orders orders) {
-        log.info("订单信息：[{}]",orders);
+        log.info("订单信息：[{}]", orders);
         orders.setDate(new Date());
         // 查询该订单商品库存是否够扣减
         Goods currentGoods = goodsMapper.findGoodsByGid(orders.getGid());
@@ -46,10 +46,10 @@ public class OrdersServiceImpl implements IOrdersService {
             throw new RuntimeException("库存不足！");
         }
         // 扣减库存
-        goodsMapper.deductGoodsStock(orders.getGid(),orders.getNumber());
+        goodsMapper.deductGoodsStock(orders.getGid(), orders.getNumber());
         // 查询当前用户余额是否够买该商品总价
         User currentUser = userMapper.selectByPrimaryKey(orders.getUid());
-        if(currentUser.getBalance() < orders.getTotal()){
+        if (currentUser.getBalance() < orders.getTotal()) {
             log.info("余额不足！");
             throw new RuntimeException("余额不足！");
         }
@@ -67,7 +67,7 @@ public class OrdersServiceImpl implements IOrdersService {
 
     @Override
     public String updateOrdersById(Orders orders) {
-        log.info("修改后的信息为:[{}]",orders);
+        log.info("修改后的信息为:[{}]", orders);
         return null;
     }
 }

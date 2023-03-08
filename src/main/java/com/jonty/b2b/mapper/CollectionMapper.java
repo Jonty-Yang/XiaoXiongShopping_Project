@@ -17,7 +17,7 @@ public interface CollectionMapper {
     int addCollection(Collection collection);
 
     // 取消收藏
-    int deleteCollectionByUidGId(@Param("uid") Integer uid,@Param("gid") Integer gid);
+    int deleteCollectionByUidGId(@Param("uid") Integer uid, @Param("gid") Integer gid);
 
     // 查询所有收藏商品 根据uid
     List<Collection> findAllByUid(Integer uid);

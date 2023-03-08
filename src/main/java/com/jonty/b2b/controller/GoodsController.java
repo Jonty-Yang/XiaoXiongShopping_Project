@@ -44,12 +44,12 @@ public class GoodsController {
 
     // 根据商品类型id查询商品信息
     @GetMapping("/findGoodsByTid/{tid}")
-    public List<Goods> findGoodsByTid(@PathVariable Integer tid){
+    public List<Goods> findGoodsByTid(@PathVariable Integer tid) {
         return goodsService.findGoodsByTid(tid);
     }
 
     @GetMapping("/findGoodsBySid/{sid}")
-    public List<Goods> findGoodsBySid(@PathVariable Integer sid){
+    public List<Goods> findGoodsBySid(@PathVariable Integer sid) {
         return goodsService.findGoodsBySid(sid);
     }
 }

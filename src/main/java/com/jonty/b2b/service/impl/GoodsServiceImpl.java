@@ -69,6 +69,6 @@ public class GoodsServiceImpl implements IGoodsService {
     // 扣减库存
     @Override
     public int deductGoodsStock(Integer gid, Integer stock) {
-        return goodsMapper.deductGoodsStock(gid,stock);
+        return goodsMapper.deductGoodsStock(gid, stock);
     }
 }

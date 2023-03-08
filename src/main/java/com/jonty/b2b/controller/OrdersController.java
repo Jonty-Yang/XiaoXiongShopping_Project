@@ -20,14 +20,14 @@ public class OrdersController {
     private IOrdersService ordersService;
 
     @PostMapping("/buy")
-    public String creatOrders(@RequestBody Orders orders){
+    public String creatOrders(@RequestBody Orders orders) {
         int add = ordersService.createOrder(orders);
         return add > 0 ? "下单成功！" : "下单失败！";
     }
 
     // 根据uid查询订单信息
     @GetMapping("/findOrdersByUid/{uid}")
-    public List<Orders> findOrdersByUid(@PathVariable("uid") Integer uid){
+    public List<Orders> findOrdersByUid(@PathVariable("uid") Integer uid) {
         return ordersService.findAllByUid(uid);
     }
 }

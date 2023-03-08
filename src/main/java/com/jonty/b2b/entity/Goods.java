@@ -44,7 +44,7 @@ public class Goods { // 商品信息类
      *
      * @return 简单商品信息 vo对象
      */
-    public SimpleGoodsInfo simpleGoodsInfo() {
+    public SimpleGoodsInfo toSimpleGoodsInfo() {
         return new SimpleGoodsInfo(
                 this.gid,
                 this.name,

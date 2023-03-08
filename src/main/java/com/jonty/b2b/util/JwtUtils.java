@@ -22,22 +22,22 @@ public class JwtUtils {
     private final static Duration exp = Duration.ofHours(5);
 
     // 构建凭证 根据用户名构建JWT字符串
-    public static String generate(String phone){
+    public static String generate(String phone) {
         Date expDate = new Date(System.currentTimeMillis() + exp.toMillis());
         return Jwts.builder()
                 .setExpiration(expDate)
                 .setSubject(phone)
                 .setIssuedAt(new Date())
-                .signWith(SignatureAlgorithm.HS512,SECRET_KEY)
+                .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
     }
 
     // 解析凭证
-    public static Claims parse(String token){
-       return Jwts.parser()
-               .setSigningKey(SECRET_KEY)
-               .parseClaimsJws(token)
-               .getBody();
+    public static Claims parse(String token) {
+        return Jwts.parser()
+                .setSigningKey(SECRET_KEY)
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     public static void main(String[] args) {
@@ -48,7 +48,7 @@ public class JwtUtils {
         System.out.println(claims.getSubject());
         System.out.println(claims.getExpiration());
         System.out.println(claims.getIssuedAt());
-        if(new Date().before(claims.getExpiration())){
+        if (new Date().before(claims.getExpiration())) {
             System.out.println("凭证还未过期");
         }
     }

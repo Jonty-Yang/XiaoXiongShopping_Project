@@ -13,6 +13,7 @@ public interface IAddressService {
 
     /**
      * 根据用户id查询对应的地址信息
+     *
      * @param uid 用户id
      * @return 地址集合
      */

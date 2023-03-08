@@ -3,6 +3,7 @@ package com.jonty.b2b.service.impl;
 import com.jonty.b2b.entity.Collection;
 import com.jonty.b2b.mapper.CollectionMapper;
 import com.jonty.b2b.service.ICollectionService;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +31,7 @@ public class CollectionServiceImpl implements ICollectionService {
         // 先查询当前用户所有收藏的商品
         List<Collection> collectionList = collectionMapper.findAllByUid(collection.getUid());
         for (Collection c : collectionList) {
-            if(c.getGid() == collection.getGid()){
+            if (c.getGid() == (int) collection.getGid()) {
                 // 说明已经收藏过
                 return 2;
             }
@@ -40,7 +41,7 @@ public class CollectionServiceImpl implements ICollectionService {
 
     @Override
     public int deleteCollectionByUidGId(Integer uid, Integer gid) {
-        return collectionMapper.deleteCollectionByUidGId(uid,gid);
+        return collectionMapper.deleteCollectionByUidGId(uid, gid);
     }
 
     @Override

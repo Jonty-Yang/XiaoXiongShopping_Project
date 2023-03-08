@@ -29,7 +29,7 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice {
             return false;
         }
         // 如果类上使用了自定义注解IgnoreResponseAdvice 就不进行响应数据封装
-        if(methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)){
+        if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)) {
             return false;
         }
         return true;
@@ -37,10 +37,10 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice {
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        CommonResponse<Object> commonResponse = new CommonResponse<>(0,"");
+        CommonResponse<Object> commonResponse = new CommonResponse<>(0, "");
         if (body == null) {
             return commonResponse;
-        } else if( body instanceof CommonResponse){
+        } else if (body instanceof CommonResponse) {
             commonResponse = (CommonResponse<Object>) body;
         } else {
             commonResponse.setCode(200);
@@ -49,8 +49,8 @@ public class CommonResponseDataAdvice implements ResponseBodyAdvice {
         }
 
         // 如果数据就是一个字符串，需要手动转json
-        if(StringHttpMessageConverter.class.isAssignableFrom(selectedConverterType)){
-            log.info("converter: [{}]",selectedConverterType);
+        if (StringHttpMessageConverter.class.isAssignableFrom(selectedConverterType)) {
+            log.info("converter: [{}]", selectedConverterType);
             return JSON.toJSONString(commonResponse);
         }
         return commonResponse;

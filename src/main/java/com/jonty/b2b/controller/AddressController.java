@@ -23,7 +23,7 @@ public class AddressController {
     private IAddressService addressService;
 
     @GetMapping("/addressByUserId/{id}")
-    public List<Address> getAddressByUserId(@PathVariable Integer id){
+    public List<Address> getAddressByUserId(@PathVariable Integer id) {
         return addressService.getAddressByUserId(id);
     }
 }

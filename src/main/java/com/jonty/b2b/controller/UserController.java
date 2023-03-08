@@ -44,7 +44,7 @@ public class UserController {
     }
 
     //@PostMapping("/login")
-    public String userLogin2(@RequestBody LoginUserInfo loginUserInfo){
+    public String userLogin2(@RequestBody LoginUserInfo loginUserInfo) {
         System.out.println("loginUserInfo = " + loginUserInfo);
         return userService.userLoginByText(loginUserInfo);
     }

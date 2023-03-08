@@ -18,7 +18,7 @@ public class GlobalExceptionAdvice {
     public CommonResponse<String> handleException(HttpServletRequest request, Exception ex) {
         CommonResponse<String> response = new CommonResponse<>();
         response.setCode(500);
-        response.setMessage("error");
+        response.setMessage("error 通用异常处理");
         response.setData(ex.getMessage());
         return response;
     }

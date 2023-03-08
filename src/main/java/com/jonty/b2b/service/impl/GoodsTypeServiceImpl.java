@@ -3,6 +3,7 @@ package com.jonty.b2b.service.impl;
 import com.jonty.b2b.entity.GoodsType;
 import com.jonty.b2b.mapper.GoodsTypeMapper;
 import com.jonty.b2b.service.IGoodsTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,7 +18,7 @@ import java.util.List;
 @Service
 public class GoodsTypeServiceImpl implements IGoodsTypeService {
 
-    @Resource
+    @Autowired
     private GoodsTypeMapper goodsTypeMapper;
 
     @Override

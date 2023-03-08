@@ -27,5 +27,5 @@ public interface IGoodsService {
     List<Goods> findGoodsBySid(Integer sid);
 
     // 扣减库存
-    int deductGoodsStock(Integer gid,Integer stock);
+    int deductGoodsStock(Integer gid, Integer stock);
 }

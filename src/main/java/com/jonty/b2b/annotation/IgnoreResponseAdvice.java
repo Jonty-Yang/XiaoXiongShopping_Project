@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  * 创建日期: 2022/12/22 16:03
  * 项目名称: boot-vue-login
  */
-@Target({ElementType.TYPE,ElementType.METHOD})
+@Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IgnoreResponseAdvice {
 

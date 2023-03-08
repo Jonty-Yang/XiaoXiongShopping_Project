@@ -7,6 +7,7 @@ import com.jonty.b2b.service.IUserService;
 import com.jonty.b2b.util.JwtUtils;
 import com.jonty.b2b.vo.LoginUserInfo;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,10 @@ import javax.annotation.Resource;
 @Slf4j
 public class UserServiceImpl implements IUserService {
 
-    @Resource
+    @Autowired
     private UserMapper userMapper;
 
-    @Resource
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     // 用户登录
@@ -33,11 +34,11 @@ public class UserServiceImpl implements IUserService {
     public String userLogin(LoginUserInfo loginUserInfo) {
         User currentUser = userMapper.selectUserByPhone(loginUserInfo.getPhone());
         System.out.println("currentUser = " + currentUser);
-        if(currentUser == null){
+        if (currentUser == null) {
             throw new UserNotFoundException("用户未找到！");
         }
         // 校验密码
-        if(!passwordEncoder.matches(loginUserInfo.getPassword(),currentUser.getPassword())){
+        if (!passwordEncoder.matches(loginUserInfo.getPassword(), currentUser.getPassword())) {
             throw new BadCredentialsException("密码错误！");
         }
         // 颁发凭证
@@ -58,18 +59,19 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean updateUserById(User user) {
-        log.info("修改后的信息为:[{}]",user);
+        log.info("修改后的信息为:[{}]", user);
         int update = userMapper.updateByPrimaryKeySelective(user);
         return update >= 1;
     }
 
     /**
      * 模拟登录 静态数据
+     *
      * @param loginUserInfo 登录 vo 对象
      * @return
      */
     @Override
-    public String userLoginByText(LoginUserInfo loginUserInfo){
+    public String userLoginByText(LoginUserInfo loginUserInfo) {
         if (!("admin".equalsIgnoreCase(loginUserInfo.getPhone()) ||
                 "123456".equalsIgnoreCase(loginUserInfo.getPassword()))) {
             throw new RuntimeException("密码或用户名不正确，静态登录！");
