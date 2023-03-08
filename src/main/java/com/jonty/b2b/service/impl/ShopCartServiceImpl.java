@@ -35,7 +35,7 @@ public class ShopCartServiceImpl implements IShopCartService {
         // 先查询当前用户的购物车商品
         List<ShopCart> cartList = shopCartMapper.findCartByUid(cart.getUid());
         for (ShopCart c : cartList) {
-            if (c.getGid() == cart.getGid()) {
+            if (c.getGid() == (int) cart.getGid()) {
                 // 如果该商品已在购物车，则只需要修改该商品的数量即可
                 return shopCartMapper.updateNumByCart(cart);
             }

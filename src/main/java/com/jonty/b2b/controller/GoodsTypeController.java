@@ -2,6 +2,7 @@ package com.jonty.b2b.controller;
 
 import com.jonty.b2b.entity.GoodsType;
 import com.jonty.b2b.service.IGoodsTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +19,7 @@ import java.util.List;
 @RequestMapping("/goodsType")
 public class GoodsTypeController {
 
-    @Resource
+    @Autowired
     private IGoodsTypeService goodsTypeService;
 
     @GetMapping("/getAllGoodsType")

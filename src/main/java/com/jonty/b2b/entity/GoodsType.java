@@ -17,7 +17,8 @@ import lombok.NoArgsConstructor;
 public class GoodsType { // 商品类型类
 
     private Integer tid;    // 类型id
-    private String tname;    // 类型名称
+    private String tname;   // 类型名称
     private Integer status; // 状态
     private String spare;   // 备用字段
+
 }

@@ -5,12 +5,8 @@ import com.jonty.b2b.mapper.UserMapper;
 import com.jonty.b2b.service.IUserService;
 
 import com.jonty.b2b.vo.LoginUserInfo;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,13 +19,13 @@ import java.util.Map;
 @RequestMapping("/user")
 public class UserController {
 
-    @Resource
+    @Autowired
     private IUserService userService;
 
-    @Resource
+    @Autowired
     private UserMapper userMapper;
 
-    @PostMapping("/login")
+    //@PostMapping("/login")
     public Map<String, Object> UserLogin(@RequestBody LoginUserInfo loginUserInfo) {
         Map<String, Object> map = new HashMap<>();
         map.put("token", userService.userLogin(loginUserInfo));
@@ -43,7 +39,7 @@ public class UserController {
         return userService.userRegister(user);
     }
 
-    //@PostMapping("/login")
+    @PostMapping("/login")
     public String userLogin2(@RequestBody LoginUserInfo loginUserInfo) {
         System.out.println("loginUserInfo = " + loginUserInfo);
         return userService.userLoginByText(loginUserInfo);

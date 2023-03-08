@@ -72,8 +72,8 @@ public class UserServiceImpl implements IUserService {
      */
     @Override
     public String userLoginByText(LoginUserInfo loginUserInfo) {
-        if (!("admin".equalsIgnoreCase(loginUserInfo.getPhone()) ||
-                "123456".equalsIgnoreCase(loginUserInfo.getPassword()))) {
+        if (!("18811360631".equalsIgnoreCase(loginUserInfo.getPhone()) ||
+                "123".equalsIgnoreCase(loginUserInfo.getPassword()))) {
             throw new RuntimeException("密码或用户名不正确，静态登录！");
         }
         return JwtUtils.generate(loginUserInfo.getPhone());

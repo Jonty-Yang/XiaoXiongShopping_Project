@@ -26,7 +26,7 @@ public class Shop { // 商家类
     private String address;     // 店铺地址
     private Date date;          // 开店日期
     private String power;       // 商家权限
-    private Integer status;      // 状态
+    private Integer status;     // 状态
     private String spare;       // 备用字段
 
 }
