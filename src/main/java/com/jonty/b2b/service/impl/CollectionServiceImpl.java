@@ -3,7 +3,6 @@ package com.jonty.b2b.service.impl;
 import com.jonty.b2b.entity.Collection;
 import com.jonty.b2b.mapper.CollectionMapper;
 import com.jonty.b2b.service.ICollectionService;
-import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
